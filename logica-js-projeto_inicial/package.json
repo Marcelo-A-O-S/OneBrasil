@@ -1,0 +1,15 @@
+{
+  "main": "main.js",
+  "scripts": {
+    "transpiler": "tsc",
+    "start": "npm run transpiler && npm run electron",
+    "electron": "electron ."
+  },
+  "dependencies": {
+    "electron": "^34.0.0",
+    "electron-prompt": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/electron-prompt": "^1.6.5"
+  }
+}
