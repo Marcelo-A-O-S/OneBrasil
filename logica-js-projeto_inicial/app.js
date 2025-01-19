@@ -1,30 +1,26 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    alert("Boas vindas ao jogo do numero secreto");
-    let numeroSecreto = 5;
-    let chute = 0;
-    while (chute != numeroSecreto) {
-        const result = yield window.api.getNumber();
-        if (result != null) {
-            chute = parseInt(result);
-            if (chute == numeroSecreto) {
-                alert("Isso ai! Você acertou o número secreto!");
-            }
-            else {
-                alert("infelizmente você errou, tente novamente");
-            }
+alert("Boas vindas ao jogo do numero secreto");
+let numeroSecreto = 5;
+let chute = 0;
+let tentativa = 1;
+while (chute != numeroSecreto) {
+    const result = prompt("Escolha um número entre 1 e 10:");
+    if (result != null) {
+        chute = parseInt(result);
+        if (chute == numeroSecreto) {
+            alert(`Isso ai! Você acertou o número secreto com ${tentativa} tentativas!`);
         }
         else {
-            alert("Informe o numero como foi solicitado!");
+            tentativa++;
+            if (chute < numeroSecreto) {
+                alert(`O número secreto é maior que ${chute}`);
+            }
+            else {
+                alert(`O número secreto é menor que ${chute}`);
+            }
         }
     }
-}))();
+    else {
+        alert("Informe o numero como foi solicitado!");
+    }
+}
