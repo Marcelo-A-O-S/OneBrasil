@@ -8,17 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+let numeroMaximo = 10;
+let chute = 0;
+let tentativa = 1;
+function gerarNumeroSecreto() {
+    let numeroAleatorio = Math.random() * numeroMaximo + 1;
+    return parseInt(numeroAleatorio.toString());
+}
 (() => __awaiter(void 0, void 0, void 0, function* () {
     alert("Boas vindas ao jogo do numero secreto");
-    let numeroSecreto = 5;
-    let chute = 0;
-    let tentativa = 1;
+    let numeroSecreto = gerarNumeroSecreto();
     while (chute != numeroSecreto) {
-        const result = yield window.api.getNumber();
+        const result = yield window.api.getNumber(numeroMaximo);
         if (result != null) {
             chute = parseInt(result);
             if (chute == numeroSecreto) {
-                alert(`Isso ai! Você acertou o número secreto com ${tentativa} tentativas!`);
+                break;
             }
             else {
                 if (chute < numeroSecreto) {
@@ -34,4 +39,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
             alert("Informe o numero como foi solicitado!");
         }
     }
+    let palavraTentativa = tentativa > 1 ? 'tentativas' : 'tentativa';
+    alert(`Isso ai! Você acertou o número secreto com ${tentativa} ${palavraTentativa}!`);
 }))();

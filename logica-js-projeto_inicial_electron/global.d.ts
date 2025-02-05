@@ -3,7 +3,7 @@ export {}
 declare global {
     interface Window {
         api: {
-            getNumber: () =>Promise<string | null>
+            getNumber: (numeroMaximo: number) =>Promise<string | null>
         }
     } 
 }

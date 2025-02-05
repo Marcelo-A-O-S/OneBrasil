@@ -15,15 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const electron_1 = require("electron");
 const electron_prompt_1 = __importDefault(require("electron-prompt"));
 const ExposeHandles = () => __awaiter(void 0, void 0, void 0, function* () {
-    electron_1.ipcMain.handle('get-number', () => __awaiter(void 0, void 0, void 0, function* () {
+    electron_1.ipcMain.handle('get-number', (event, numeroMaximo) => __awaiter(void 0, void 0, void 0, function* () {
         return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
             const userInput = yield (0, electron_prompt_1.default)({
                 title: 'Jogo do Número Secreto',
-                label: 'Digite um número entre 1 e 10:',
+                label: `Digite um número entre 1 e ${numeroMaximo}:`,
                 inputAttrs: {
                     type: 'number',
                     min: '1',
-                    max: '10',
+                    max: `${numeroMaximo}`,
                 },
                 type: 'input',
             });

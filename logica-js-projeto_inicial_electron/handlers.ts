@@ -1,15 +1,15 @@
 import { ipcMain } from "electron"
 import prompt from 'electron-prompt'
 const ExposeHandles = async () =>{
-    ipcMain.handle('get-number', async()=>{
+    ipcMain.handle('get-number', async(event, numeroMaximo)=>{
         return new Promise(async (resolve, reject)=>{
             const userInput = await prompt({
                 title: 'Jogo do Número Secreto',
-                label: 'Digite um número entre 1 e 10:',
+                label: `Digite um número entre 1 e ${numeroMaximo}:`,
                 inputAttrs: {
                   type: 'number',
                   min: '1',
-                  max: '10',
+                  max: `${numeroMaximo}`,
                 },
                 type: 'input',
               })

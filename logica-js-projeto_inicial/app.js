@@ -1,14 +1,19 @@
 "use strict";
 alert("Boas vindas ao jogo do numero secreto");
-let numeroSecreto = 5;
+let numeroMaximo = 10;
 let chute = 0;
 let tentativa = 1;
+function gerarNumeroSecreto() {
+    let numeroAleatorio = Math.random() * numeroMaximo + 1;
+    return parseInt(numeroAleatorio.toString());
+}
+let numeroSecreto = gerarNumeroSecreto();
 while (chute != numeroSecreto) {
-    const result = prompt("Escolha um número entre 1 e 10:");
+    const result = prompt(`Escolha um número entre 1 e ${numeroMaximo}:`);
     if (result != null) {
         chute = parseInt(result);
         if (chute == numeroSecreto) {
-            alert(`Isso ai! Você acertou o número secreto com ${tentativa} tentativas!`);
+            break;
         }
         else {
             tentativa++;
@@ -24,3 +29,5 @@ while (chute != numeroSecreto) {
         alert("Informe o numero como foi solicitado!");
     }
 }
+let palavraTentativa = tentativa > 1 ? 'tentativas' : 'tentativa';
+alert(`Isso ai! Você acertou o número secreto com ${tentativa} ${palavraTentativa}!`);
